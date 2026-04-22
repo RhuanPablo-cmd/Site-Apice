@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Entre em contato com a Ápice Soluções Empresariais para solicitar orçamento, suporte ou tirar dúvidas.">
+    <title>Contato - Ápice Empresarial</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Local -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="contato.css">
+</head>
+
+<body>
+    <!-- Botões Flutuantes -->
+    <button class="theme-toggle-btn" id="themeToggle" title="Alternar Modo Claro/Escuro">
+        <span id="themeIcon">🌙</span>
+    </button>
+
+    <button class="back-to-top-btn" id="backToTopBtn" title="Voltar ao Topo">↑</button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="images/logo-apice.png" alt="Ápice Soluções Empresariais" class="logo-img" loading="lazy">
+            </div>
+
+            <!-- Botão Hamburguer -->
+            <button class="hamburger" id="hamburger" aria-label="Abrir Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav class="nav" id="navMenu" role="navigation">
+                <a href="index.html" class="nav-link">Página Inicial</a>
+                <a href="servico.html" class="nav-link">Serviços</a>
+                <a href="cursos.html" class="nav-link">Cursos</a>
+                <a href="instrutor.html" class="nav-link">Sobre</a>
+                <a href="contato.html" class="nav-link active">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            function positionVLibrasButton() {
+                function applyVLibrasPosition() {
+                    const vlibrasButton = document.querySelector('[vw-access-button]') || document.querySelector('.vw-access-button');
+
+                    if (!vlibrasButton) {
+                        return false;
+                    }
+
+                    vlibrasButton.style.position = 'fixed';
+                    vlibrasButton.style.right = window.innerWidth <= 768 ? '20px' : '30px';
+                    vlibrasButton.style.bottom = window.innerWidth <= 768 ? '95px' : '110px';
+                    vlibrasButton.style.zIndex = '9998';
+                    return true;
+                }
+
+                if (applyVLibrasPosition()) {
+                    window.addEventListener('resize', applyVLibrasPosition);
+                    return;
+                }
+
+                const intervalId = setInterval(() => {
+                    if (applyVLibrasPosition()) {
+                        clearInterval(intervalId);
+                    }
+                }, 300);
+
+                setTimeout(() => clearInterval(intervalId), 10000);
+                window.addEventListener('resize', applyVLibrasPosition);
+            }
+
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+            positionVLibrasButton();
+        </script>
+
+    <section class="hero-page">
+        <div class="hero-page-content">
+            <h1>Entre em Contato</h1>
+            <p>Estamos prontos para te ajudar. Deixe seus dados abaixo e logo entraremos em contato.</p>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section class="cadastro-section">
+        <div class="container">
+            <div class="cadastro-container">
+                <div class="cadastro-form-wrapper">
+                    <h2>Fale Conosco</h2>
+                    <p class="cadastro-subtitle">Preencha o formulário abaixo para nos enviar uma mensagem</p>
+                    
+                    <form id="contatoForm" class="cadastro-form">
+                        <fieldset class="form-section">
+                            <legend>Suas Informações</legend>
+                        
+                            <div class="form-group">
+                                <label for="nome">Nome Completo / Nome empresarial *</label>
+                                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo ou nome empresarial"
+                                    required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">E-mail *</label>
+                                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefone">Telefone</label>
+                                    <input type="tel" id="telefone" name="telefone" placeholder="(31) 9 9999-9999">
+                                </div>
+                            </div>
+
+                            <!-- SEÇÃO DE TIPO DE PESSOA (FÍSICA OU JURÍDICA) -->
+                            <div class="form-group">
+                                <label>Tipo de Contato *</label>
+                                <div class="toggle-buttons">
+                                    <button type="button" class="toggle-btn active" id="tipoPessoaFisica" data-tipo="fisica">
+                                        <i class="fas fa-user"></i> Pessoa Física
+                                    </button>
+                                    <button type="button" class="toggle-btn" id="tipoPessoaJuridica" data-tipo="juridica">
+                                        <i class="fas fa-building"></i> Pessoa Jurídica
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- CAMPO CPF (VISÍVEL POR PADRÃO) -->
+                            <div class="form-row" id="cpfContainer">
+                                <div class="form-group">
+                                    <label for="cpf">CPF *</label>
+                                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                                </div>
+                                <div class="form-group form-group-placeholder" aria-hidden="true">
+                                    <label>&nbsp;</label>
+                                    <input type="text" disabled>
+                                </div>
+                            </div>
+
+                            <!-- CAMPO CNPJ (OCULTO POR PADRÃO) -->
+                            <div class="form-row" id="cnpjContainer">
+                                <div class="form-group">
+                                    <label for="cnpj">CNPJ *</label>
+                                    <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00">
+                                </div>
+                                <div class="form-group form-group-placeholder" aria-hidden="true">
+                                    <label>&nbsp;</label>
+                                    <input type="text" disabled>
+                                </div>
+                            </div>
+
+                            <!-- SEÇÃO DE CURSOS -->
+                            <div class="form-group">
+                                <label for="curso">Cursos de Interesse (Seleção Múltipla)</label>
+                                <div class="custom-select-container">
+                                    <input type="text" id="curso" name="curso"
+                                        placeholder="Clique para selecionar os cursos..." autocomplete="off" readonly>
+                                    <div id="coursesDropdown" class="courses-dropdown">
+                                        <div class="course-option" data-price="250">CIP + A – Segurança</div>
+                                        <div class="course-option" data-price="300">NR10 – Segurança Elétrica</div>
+                                        <div class="course-option" data-price="350">Operador de Empilhadeira (NR11)</div>
+                                        <div class="course-option" data-price="400">Multiplicador Instrutor</div>
+                                        <div class="course-option" data-price="200">Direção Defensiva</div>
+                                        <div class="course-option" data-price="280">NR12 – Segurança em Máquinas</div>
+                                        <div class="course-option" data-price="220">Brigada de Incêndio</div>
+                                        <div class="course-option" data-price="320">Transpaleteira Elétrica</div>
+                                        <div class="course-option" data-price="380">NR33 (Espaço Confinado)</div>
+                                        <div class="course-option" data-price="380">NR35 (Trabalho em Altura)</div>
+                                        <div class="course-option" data-price="150">EPI e EPC – Proteção</div>
+                                        <div class="course-option" data-price="450">PETM – PTA</div>
+                                        <div class="course-option" data-price="290">NR18 – Construção Civil</div>
+                                    </div>
+                                </div>
+                                <div id="selectedCoursesContainer" class="selected-courses-tags">
+                                </div>
+                            </div>
+
+                            <!-- QUADRO DE ORÇAMENTO -->
+                            <div id="budgetSummary">
+                                <span>Total Estimado: </span>
+                                <span id="totalValue">R$ 0,00</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="assunto">Assunto *</label>
+                                <select id="assunto" name="assunto" required>
+                                    <option value="" disabled selected>Selecione o assunto</option>
+                                    <option value="duvidas">Dúvidas Gerais</option>
+                                    <option value="orcamento">Solicitar Orçamento</option>
+                                    <option value="suporte">Sobre os Livros</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mensagem">Mensagem: Descreva a sua atividade profissional*</label>
+                                <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar?" rows="5"
+                                    required></textarea>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            <button type="reset" class="btn btn-secondary" id="clearBtn">Limpar</button>
+                        </div>
+                    </form>
+
+
+                    <div id="successMessage" class="success-message">
+                        <i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Redirecionando...
+                    </div>
+                </div> <!-- fecha cadastro-form-wrapper -->
+            </div> <!-- fecha cadastro-container -->
+        </div> <!-- fecha container -->
+    </section> <!-- fecha cadastro-section -->
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <img src="images/logo-apice.png" alt="Ápice Soluções Empresariais" class="footer-logo-img" loading="lazy">
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="servico.html">Serviços</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="instrutor.html">Sobre</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <div class="footer-contact">
+                        <span><i class="fas fa-phone" aria-hidden="true"></i> (31) 9 8014-2641</span>
+                        <span><i class="fas fa-envelope" aria-hidden="true"></i> apiceempresarial@gmail.com</span>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Siga-nos</h3>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/wemersonnunescosta" aria-label="Facebook da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://instagram.com/wemersonnunescosta" aria-label="Instagram da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://linkedin.com/in/wemersonnunescosta" aria-label="LinkedIn da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 - Ápice Empresarial. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="contato.js"></script>
+</body>
+
+</html>

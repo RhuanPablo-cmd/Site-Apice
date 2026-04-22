@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a3a5c">
+    <title>Ápice Empresarial - Consultoria Empresarial</title>
+    
+    <!-- Preconexões para otimizar carregamento de fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts - Montserrat e Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Arquivos CSS consolidados e otimizados -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- VLibras - Plugin de acessibilidade -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    
+    <script>
+        function positionVLibrasButton() {
+            function applyVLibrasPosition() {
+                const vlibrasButton = document.querySelector('[vw-access-button]') || document.querySelector('.vw-access-button');
+                
+                if (!vlibrasButton) {
+                    return false;
+                }
+                
+                vlibrasButton.style.position = 'fixed';
+                vlibrasButton.style.right = window.innerWidth <= 768 ? '20px' : '30px';
+                vlibrasButton.style.bottom = window.innerWidth <= 768 ? '95px' : '110px';
+                vlibrasButton.style.zIndex = '9998';
+                return true;
+            }
+            
+            if (applyVLibrasPosition()) {
+                window.addEventListener('resize', applyVLibrasPosition);
+                return;
+            }
+            
+            const intervalId = setInterval(() => {
+                if (applyVLibrasPosition()) {
+                    clearInterval(intervalId);
+                }
+            }, 300);
+            
+            setTimeout(() => clearInterval(intervalId), 10000);
+            window.addEventListener('resize', applyVLibrasPosition);
+        }
+        
+        // Inicializa VLibras após o carregamento do DOM
+        if (window.VLibras) {
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+            positionVLibrasButton();
+        } else {
+            window.addEventListener('load', () => {
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+                positionVLibrasButton();
+            });
+        }
+    </script>
+
+    <!-- Botão para alternar entre tema claro e escuro -->
+    <button class="theme-toggle-btn" id="themeToggle" title="Alternar Modo Claro/Escuro" aria-label="Alternar tema">
+        <span id="themeIcon">🌙</span>
+    </button>
+
+    <!-- Botão para voltar ao topo da página -->
+    <button class="back-to-top-btn" id="backToTop" title="Voltar ao Topo" aria-label="Voltar ao topo">
+        <span>↑</span>
+    </button>
+
+    <!-- Cabeçalho da página com navegação -->
+    <header class="header">
+        <div class="container header-content">
+            <!-- Logotipo da empresa -->
+            <div class="logo">
+                <img src="images/logo-apice.png" alt="Ápice Soluções Empresariais" class="logo-img" loading="lazy">
+            </div>
+
+            <!-- Botão hambúrguer para menu mobile -->
+            <button class="hamburger" id="hamburger" aria-label="Abrir Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menu de navegação principal -->
+            <nav class="nav" id="navMenu" role="navigation">
+                <a href="index.html" class="nav-link active">Página Inicial</a>
+                <a href="servico.html" class="nav-link">Serviços</a>
+                <a href="cursos.html" class="nav-link">Cursos</a>
+                <a href="instrutor.html" class="nav-link">Sobre</a>
+                <a href="contato.html" class="nav-link">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero com carrossel de imagens -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+        <!-- Carrossel de imagens de fundo -->
+        <div class="carousel" role="region" aria-label="Carrossel de imagens">
+            <img src="images/primeira_imagem_index.png" alt="Consultoria Empresarial" class="hero-bg carousel-slide active" loading="eager">
+            <img src="images/segunda_imagem_index.png" alt="Reunião de Negócios" class="hero-bg carousel-slide" loading="lazy">
+            <img src="images/terceira_imagem_index.png" alt="Análise de Dados" class="hero-bg carousel-slide" loading="lazy">
+            <img src="images/quarta_imagem_index.png" alt="Sucesso em Equipe" class="hero-bg carousel-slide" loading="lazy">
+        </div>
+        <!-- Overlay escuro sobre as imagens -->
+        <div class="hero-overlay"></div>
+        
+        <div class="container hero-content">
+            <!-- Conteúdo principal da seção hero -->
+            <div class="hero-text">
+                <h1 id="hero-title" class="hero-title">Impulsione o crescimento da sua empresa com estratégias inteligentes</h1>
+                <p class="hero-subtitle">Consultoria empresarial focada em resultados, eficiência e crescimento sustentável.</p>
+                <a href="servico.html" aria-label="Saiba mais sobre nossos serviços">
+                    <button class="btn btn-primary">Saiba Mais</button>
+                </a>
+            </div>
+
+            <!-- Indicadores de slides do carrossel -->
+            <div class="slide-indicators" role="tablist">
+                <span class="indicator active" data-slide="0" role="tab" aria-selected="true" tabindex="0" aria-label="Slide 1"></span>
+                <span class="indicator" data-slide="1" role="tab" aria-selected="false" tabindex="-1" aria-label="Slide 2"></span>
+                <span class="indicator" data-slide="2" role="tab" aria-selected="false" tabindex="-1" aria-label="Slide 3"></span>
+                <span class="indicator" data-slide="3" role="tab" aria-selected="false" tabindex="-1" aria-label="Slide 4"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Por que escolher a Ápice -->
+    <section id="servicos" class="why-choose" aria-labelledby="servicos-title">
+        <div class="container">
+            <!-- Cabeçalho da seção -->
+            <div class="section-header">
+                <h2 id="servicos-title">Por que escolher a gente?</h2>
+                <p>Fomos pensados a partir de sua necessidade. Por que não contar com uma empresa especializada?</p>    
+            </div>
+
+            <!-- Grid de cards de serviços -->
+            <div class="cards-grid">
+                <!-- Card 1: Serviços para empresas -->
+                <article class="service-card" role="article">
+                    <div class="card-icon">
+                        <img src="images/icon-finance.png" alt="Consultoria Financeira" loading="lazy">
+                    </div>
+                    <h3>Para sua Empresa</h3>
+                    <p>Soluções estratégicas para fortalecer a gestão, otimizar processos e impulsionar resultados.</p>
+                    <a href="servico.html#empre" class="btn btn-outline" aria-label="Saiba mais sobre serviços para empresas">Saiba Mais</a>
+                </article>
+
+                <!-- Card 2: Serviços para profissionais -->
+                <article class="service-card" role="article">
+                    <div class="card-icon">
+                        <img src="images/icon-management.png" alt="Gestão Empresarial" loading="lazy">
+                    </div>
+                    <h3>Para Profissionais</h3>
+                    <p>Desenvolvimento de competências para profissionais mais preparados, confiantes e competitivos.</p>
+                    <a id="profissionais-card-link" href="servico.html#instrutor-bloco-reverse" class="btn btn-outline" aria-label="Saiba mais sobre serviços para profissionais">Saiba Mais</a>
+                </article>
+
+                <!-- Card 3: Diferenciais competitivos -->
+                <article class="service-card" role="article">
+                    <div class="card-icon">
+                        <img src="images/icon-training.png" alt="Treinamentos e Suporte" loading="lazy">
+                    </div>
+                    <h3>Diferenciais</h3>
+                    <p>Gestão inteligente, alinhada à cultura organizacional, focada em performance e resultados sustentáveis.</p>
+                    <a href="servico.html#diferenciais" class="btn btn-outline" aria-label="Saiba mais sobre nossos diferenciais">Saiba Mais</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Nós -->
+    <section id="sobre" class="about" aria-labelledby="sobre-title">
+        <div class="container about-content">
+            <!-- Texto descritivo -->
+            <div class="about-text">
+                <h2 id="sobre-title">Sobre Nós</h2>
+                <p>A Ápice Empresarial é especializada em soluções completas para empresas que buscam crescimento e excelência em gestão. Nossa equipe de especialistas trabalha lado a lado com você para identificar oportunidades e implementar estratégias vencedoras.</p>
+                <a href="instrutor.html" aria-label="Saiba mais sobre nós">
+                    <button class="btn btn-primary">Saiba Mais</button>
+                </a>
+            </div>
+            <!-- Imagem da equipe -->
+            <div class="about-image">
+                <img src="images/about-team.jpg" alt="Equipe Ápice" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé da página -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <!-- Conteúdo principal do rodapé -->
+            <div class="footer-content">
+                <!-- Coluna do logotipo -->
+                <div class="footer-column">
+                    <img src="images/logo-apice.png" alt="Ápice Soluções Empresariais" class="footer-logo-img" loading="lazy">
+                </div>
+                <!-- Coluna de links rápidos -->
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="servico.html">Serviços</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="instrutor.html">Sobre</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <!-- Coluna de contato -->
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <div class="footer-contact">
+                        <span><i class="fas fa-phone" aria-hidden="true"></i> (31) 9 8014-2641</span>
+                        <span><i class="fas fa-envelope" aria-hidden="true"></i> apiceempresarial@gmail.com</span>
+                    </div>
+                </div>
+                <!-- Coluna de redes sociais -->
+                <div class="footer-column">
+                    <h3>Siga-nos</h3>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/wemersonnunescosta" aria-label="Facebook da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://instagram.com/wemersonnunescosta" aria-label="Instagram da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://linkedin.com/in/wemersonnunescosta" aria-label="LinkedIn da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Linha inferior do rodapé -->
+            <div class="footer-bottom">
+                <p>© 2026 - Ápice Empresarial. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Arquivos JavaScript -->
+    <script src="js/script.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a3a5c">
+    <title>Cursos - Ápice Empresarial</title>
+
+    <!-- Font Awesome (Adicionado para as logos aparecerem) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="cursos.css">
+</head>
+
+
+<body>
+    <!-- Botão de Alternância de Tema -->
+    <button class="theme-toggle-btn" id="themeToggle" title="Alternar Modo Claro/Escuro">
+        <span id="themeIcon">🌙</span>
+    </button>
+
+    <!-- Botão Voltar ao Topo (LADO ESQUERDO) -->
+    <button class="back-to-top-btn" id="backToTop" title="Voltar ao Topo">
+        <span>↑</span>
+    </button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="images/logo-apice.png" alt="Ápice Soluções Empresariais" class="logo-img" loading="lazy">
+            </div>
+
+            <!-- Botão Hamburguer -->
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>   
+            </button>
+
+            <!-- Navigation -->
+            <nav class="nav" id="navMenu" role="navigation" aria-label="Navegação principal">
+                <a href="index.html" class="nav-link">Página Inicial</a>
+                <a href="servico.html" class="nav-link">Serviços</a>
+                <a href="cursos.html" class="nav-link active">Cursos</a>
+                <a href="instrutor.html" class="nav-link">Sobre</a>
+                <a href="contato.html" class="nav-link">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - Cursos -->
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            function positionVLibrasButton() {
+                function applyVLibrasPosition() {
+                    const vlibrasButton = document.querySelector('[vw-access-button]') || document.querySelector('.vw-access-button');
+
+                    if (!vlibrasButton) {
+                        return false;
+                    }
+
+                    vlibrasButton.style.position = 'fixed';
+                    vlibrasButton.style.right = window.innerWidth <= 768 ? '20px' : '30px';
+                    vlibrasButton.style.bottom = window.innerWidth <= 768 ? '95px' : '110px';
+                    vlibrasButton.style.zIndex = '9998';
+                    return true;
+                }
+
+                if (applyVLibrasPosition()) {
+                    window.addEventListener('resize', applyVLibrasPosition);
+                    return;
+                }
+
+                const intervalId = setInterval(() => {
+                    if (applyVLibrasPosition()) {
+                        clearInterval(intervalId);
+                    }
+                }, 300);
+
+                setTimeout(() => clearInterval(intervalId), 10000);
+                window.addEventListener('resize', applyVLibrasPosition);
+            }
+
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+            positionVLibrasButton();
+        </script>
+
+    <section class="hero-page">
+        <div class="hero-page-content">
+            <h1>Nossos Cursos</h1>
+            <p>Capacitação profissional de excelência para sua equipe</p>
+        </div>
+    </section>
+
+    <!-- Cursos Grid -->
+    <section class="cursos-section">
+        <div class="container">
+            <div class="section-header" id="section-header-color">
+                <h2>Programas de Treinamento</h2>
+                <p>Conheça nossos cursos especializados em segurança, operação e desenvolvimento profissional</p>
+            </div>
+
+            <div class="cursos-grid">
+                <!-- Curso 1 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c1-1.png" alt="CIP + A" class="curso-img">
+                    <div class="curso-header">
+                        <h3>CIP + A</h3>
+                        <span class="curso-badge">Segurança</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Comissão Interna de Prevenção de Acidentes. Formação de membros para identificar riscos,
+                        promover segurança e prevenir acidentes no ambiente de trabalho. Essencial para empresas que
+                        buscam reduzir sinistros.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 16 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('cipa')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 2 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c2-1.png" alt="CURSO NR10" class="curso-img">
+                    <div class="curso-header">
+                        <h3>CURSO NR10</h3>
+                        <span class="curso-badge">Segurança Elétrica</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Segurança em Instalações e Serviços em Eletricidade. Treinamento obrigatório para profissionais
+                        que trabalham com eletricidade. Aborda riscos, procedimentos e medidas de proteção contra
+                        choques elétricos.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 40 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('nr10')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 3 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c3-1.png" alt="OP. EMPILHADEIRA - NR11" class="curso-img">
+                    <div class="curso-header">
+                        <h3>OP. EMPILHADEIRA - NR11</h3>
+                        <span class="curso-badge">Operação</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Operação de Empilhadeiras. Capacitação para operadores de empilhadeiras com segurança. Inclui
+                        conhecimentos técnicos, inspeção de equipamentos e procedimentos seguros de operação em
+                        diferentes ambientes.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 20 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('nr11')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 4 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c4-1.jpg" alt="MULTIPLICADOR INSTRUTOR" class="curso-img">
+                    <div class="curso-header">
+                        <h3>MULTIPLICADOR INSTRUTOR</h3>
+                        <span class="curso-badge">Desenvolvimento</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Formação de Multiplicadores e Instrutores. Programa para desenvolver competências de ensino e
+                        treinamento. Prepara profissionais para transmitir conhecimento e multiplicar práticas de
+                        segurança na organização.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 24 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('mi')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 5 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c5-1.jpg" alt="DIREÇÃO DEFENSIVA E PREVENTIVA" class="curso-img">
+                    <div class="curso-header">
+                        <h3>DIREÇÃO DEFENSIVA E PREVENTIVA</h3>
+                        <span class="curso-badge">Segurança Veicular</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Técnicas de direção segura e defensiva. Treinamento para motoristas profissionais e frota
+                        corporativa. Reduz acidentes, economiza combustível e aumenta a vida útil dos veículos através
+                        de práticas seguras.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 8 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('ddp')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 6 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c6-1.png" alt="CURSO NR12" class="curso-img">
+                    <div class="curso-header">
+                        <h3>CURSO NR12</h3>
+                        <span class="curso-badge">Segurança em Máquinas</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Segurança de Máquinas e Equipamentos. Formação sobre proteção, guarda-corpos e dispositivos de
+                        segurança. Essencial para operadores e manutenção de máquinas em indústrias.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 16 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('nr12')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 7 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c7-1.png" alt="BRIGADA DE INCÊNDIO" class="curso-img">
+                    <div class="curso-header">
+                        <h3>BRIGADA DE INCÊNDIO</h3>
+                        <span class="curso-badge">Emergência</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Treinamento de Brigada de Incêndio. Capacitação para atuação em situações de emergência, combate
+                        a princípios de incêndio e primeiros socorros. Fundamental para a segurança patrimonial e
+                        humana.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 20 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('bdi')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 8 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c8-1.png" alt="TRANSPALETEIRA ELÉTRICA" class="curso-img">
+                    <div class="curso-header">
+                        <h3>TRANSPALETEIRA ELÉTRICA</h3>
+                        <span class="curso-badge">Operação</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Operação de Transpaleteira Elétrica. Treinamento para operadores de transpaleteiras. Aborda
+                        segurança, inspeção diária, carga e descarga, e movimentação segura de materiais.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 16 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('te')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 9 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c9-1.png" alt="CURSO NR33 - ESPAÇO CONFINADO" class="curso-img">
+                    <div class="curso-header">
+                        <h3>CURSO NR33 - ESPAÇO CONFINADO</h3>
+                        <span class="curso-badge">Segurança Especializada</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Segurança em Espaços Confinados. Capacitação para trabalhos em ambientes com risco de atmosfera
+                        perigosa. Inclui identificação de riscos, ventilação, monitoramento e resgate.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 32 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('nr33')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 10 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c10-1.png" alt="CURSO NR35 - TRABALHO EM ALTURA" class="curso-img">
+                    <div class="curso-header">
+                        <h3>CURSO NR35 - TRABALHO EM ALTURA</h3>
+                        <span class="curso-badge">Segurança em Altura</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Segurança em Trabalho em Altura. Formação obrigatória para profissionais que trabalham acima de
+                        2 metros. Aborda equipamentos de proteção, ancoragem e procedimentos de segurança.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 24 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('nr35')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 11 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c11-1.png" alt="EPI E EPC" class="curso-img">
+                    <div class="curso-header">
+                        <h3>EPI E EPC</h3>
+                        <span class="curso-badge">Proteção</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Equipamento de Proteção Individual e Coletiva. Treinamento sobre seleção, uso, conservação e
+                        limitações de EPIs e EPCs. Essencial para garantir proteção adequada em ambientes de risco.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 12 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('epi')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 12 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c12-1.png" alt="PETM - PTA" class="curso-img">
+                    <div class="curso-header">
+                        <h3>PETM - PTA</h3>
+                        <span class="curso-badge">Programa Especializado</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Programa Especializado de Treinamento em Movimentação. Capacitação completa em técnicas seguras
+                        de movimentação de cargas, postura correta e prevenção de lesões musculoesqueléticas.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 8 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('pta')">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <!-- Curso 13 -->
+                <div class="curso-card">
+                    <img src="images/cursos/c13-1.png" alt="NR18" class="curso-img">
+                    <div class="curso-header">
+                        <h3>NR18</h3>
+                        <span class="curso-badge">Construção Civil</span>
+                    </div>
+                    <p class="curso-descricao">
+                        Segurança na Indústria da Construção. Treinamento focado nas normas de segurança para canteiros
+                        de obras, prevenindo riscos específicos do setor e garantindo a integridade dos trabalhadores.
+                    </p>
+                    <div class="curso-footer">
+                        <span class="curso-duracao">📅 16 horas</span>
+                        <button class="btn btn-small" onclick="abrirModal('nr18')">Saiba Mais</button>
+                    </div>
+                </div>
+
+
+                <!-- ===== MODAIS ===== -->
+
+                <!-- Curso 1 -->
+                <div class="modal" id="cipa">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('cipa')">&times;</span>
+
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c1-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c1-2.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c1-3.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c1-4.jpg" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+
+                            </div>
+                        </div>
+
+                        <h2>Detalhes do Treinamento</h2>
+                        <p>
+                            O treinamento da CIPA é uma capacitação obrigatória para os membros da Comissão Interna de
+                            Prevenção de Acidentes, focada na prevenção de acidentes e doenças ocupacionais,
+                            regulamentada
+                            pela NR-5.
+                        </p>
+                        <p>
+                            A carga horária varia de 8 a 20 horas, de acordo com o grau de risco da empresa (definido
+                            pela
+                            NR-4):
+                        </p>
+                        <p>
+                            <strong>Grau de Risco 1:</strong> 8 horas (pode ser totalmente online ou
+                            semipresencial).<br>
+                            <strong>Grau de Risco 2:</strong> 12 horas (pelo menos 4 horas presenciais).<br>
+                            <strong>Grau de Risco 3:</strong> 16 horas (pelo menos 8 horas presenciais).<br>
+                            <strong>Grau de Risco 4:</strong> 20 horas (pelo menos 8 horas presenciais).
+                        </p>
+                        <p>
+                            A carga horária diária máxima é de 8 horas.
+                        </p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 2 -->
+                <div class="modal" id="nr10">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('nr10')">&times;</span>
+
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c2-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c2-2.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c2-3.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c2-4.png" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+
+                        <h2>Detalhes do Treinamento NR10</h2>
+
+                        <p>
+                            O curso NR10 é um treinamento obrigatório para profissionais que trabalham com eletricidade,
+                            direta ou indiretamente, com o objetivo de garantir a segurança e prevenir acidentes.
+                        </p>
+
+                        <p>
+                            Ele aborda riscos elétricos, combate e prevenção de incêndios e primeiros socorros, com
+                            validade de dois anos, sendo necessária reciclagem periódica.
+                        </p>
+
+                        <p>
+                            Existem modalidades online e presenciais, incluindo curso básico para baixa tensão e
+                            complementar para alta tensão (SEP).
+                        </p>
+
+                        <h3>Tipos de Curso</h3>
+                        <p>
+                            <strong>NR Básico - 40h:</strong> Para profissionais que atuam com baixa tensão (50V a
+                            1000V CA ou 120V a 1500V CC).<br>
+                            <strong>NR Avançado SEP - 40h:</strong> Para profissionais que interagem com alta tensão
+                            (Sistema Elétrico de Potência).<br>
+                            <strong>Reciclagem - 16h:</strong> Atualização obrigatória a cada dois anos.
+                        </p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 3 -->
+                <div class="modal" id="nr11">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('nr11')">&times;</span>
+
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c3-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c3-2.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c3-3.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c3-4.jpg" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+
+                        <h2>Detalhes do Treinamento NR 11 – Operador de Empilhadeira</h2>
+
+                        <p>
+                            O curso de NR 11 para operador de empilhadeira capacita o profissional a operar o
+                            equipamento de forma segura e eficiente, conforme as normas regulamentadoras.
+                        </p>
+
+                        <p>
+                            Ele abrange temas como legislação, tipos de empilhadeiras, técnicas de manuseio de cargas,
+                            manutenção preventiva e inspeção de equipamentos, garantindo a segurança do trabalhador e do
+                            ambiente.
+                        </p>
+
+                        <h3>O que o curso abrange</h3>
+                        <p>
+                            <strong>Legislação e normas:</strong> Diretrizes da NR 11 sobre transporte,
+                            movimentação, armazenagem e manuseio de materiais.<br>
+                            <strong>Tipos de empilhadeiras:</strong> Modelos, características e aplicações.<br>
+                            <strong>Técnicas de operação:</strong> Manuseio de cargas, inspeção e manutenção
+                            preventiva.<br>
+                            <strong>Segurança no trabalho:</strong> Prevenção de acidentes e garantia de um ambiente
+                            mais protegido.
+                        <p>
+
+                        <p><strong>Carga Horária:</strong> 32 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 4 -->
+                <div class="modal" id="mi">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('mi')">&times;</span>
+
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c4-1.jpg" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c4-2.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c4-3.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c4-4.jpg" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+
+                        <h2>Detalhes do Treinamento Multiplicador NR 35</h2>
+
+                        <p>
+                            O curso multiplicador NR 35 capacita profissionais a ministrar treinamentos sobre trabalho
+                            em altura, ensinando teoria e prática da Norma Regulamentadora 35.
+                        </p>
+
+                        <p>
+                            O objetivo é formar instrutores qualificados para transmitir conhecimentos sobre segurança,
+                            EPIs, procedimentos de resgate e análise de riscos.
+                        </p>
+
+                        <h3>O que é o curso Multiplicador NR 35</h3>
+                        <p>
+                            <strong>Capacitação de instrutores:</strong> Prepara o profissional para ministrar
+                            treinamentos com segurança e qualidade.<br>
+                            <strong>Abrangência:</strong> Seleção, inspeção e uso de equipamentos, planejamento de
+                            tarefas, riscos e procedimentos de emergência.<br>
+                            <strong>Objetivo principal:</strong> Garantir a segurança em trabalhos em altura,
+                            minimizando acidentes.
+                        </p>
+
+                        <h3>Benefícios</h3>
+                        <p>
+                            <strong>Proficiência:</strong> Agrega valor ao profissional de segurança do trabalho.
+                            <br>
+                            <strong>Networking:</strong> Troca de experiências com outros profissionais.<br>
+                            <strong>Qualificação:</strong> Habilita a ministrar treinamentos com excelência e
+                            segurança.
+                        </p>
+
+                        <p><strong>Carga Horária:</strong> 40 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 5 -->
+                <div class="modal" id="ddp">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('ddp')">&times;</span>
+
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c5-1.jpg" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c5-2.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c5-3.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c5-4.jpg" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+
+                        <h2>Detalhes do Treinamento – Direção Defensiva e Preventiva</h2>
+
+                        <p>
+                            O curso de direção defensiva e preventiva ensina condutores a dirigir de forma mais segura,
+                            antecipando riscos e evitando acidentes.
+                        </p>
+
+                        <p>
+                            O conteúdo aborda técnicas de dirigibilidade, manutenção preventiva de veículos, legislação
+                            de trânsito e como reagir a situações de perigo.
+                        </p>
+
+                        <h3>O que você vai aprender</h3>
+                        <p>
+                            <strong>Direção preventiva e evasiva:</strong> Técnicas para prever e reagir a
+                            imprevistos no trânsito.<br>
+                            <strong>Manutenção do veículo:</strong> Checagem de equipamentos de segurança e
+                            componentes do veículo.<br>
+                            <strong>Condições de trânsito e climáticas:</strong> Condução em chuva, neblina e
+                            tráfego intenso.<br>
+                            <strong>Reação a acidentes:</strong> Como agir e minimizar impactos.<br>
+                            <strong>Condições físicas e mentais:</strong> Influência do sono, estresse, álcool e
+                            medicamentos na direção.
+                        </p>
+
+                        <h3>Carga Horária</h3>
+                        <p>
+                            <strong>Básico:</strong> 4 horas<br>
+                            <strong>Avançado:</strong> 16 horas
+                        </p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 6 -->
+                <div class="modal" id="nr12">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('nr12')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c6-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c6-2.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c6-3.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c6-4.jpg" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento NR 12</h2>
+
+                        <p>
+                            O curso de NR 12 é obrigatório para profissionais que operam, mantêm ou inspecionam máquinas
+                            e equipamentos, visando garantir a segurança no trabalho.
+                        </p>
+
+                        <p>
+                            Regulamentado pela Norma Regulamentadora nº 12, aborda riscos mecânicos, elétricos,
+                            térmicos, químicos e ergonômicos, além de métodos para prevenção e controle.
+                        </p>
+
+                        <h3>O que abrange o treinamento</h3>
+                        <p>
+                            <strong>Princípios de Segurança:</strong> Aplicação de regras, procedimentos e uso
+                            correto dos dispositivos de segurança.<br>
+                            <strong>Procedimentos Seguros:</strong> Métodos de trabalho, operação, parada e ajustes
+                            nas máquinas.<br>
+                            <strong>Proteções e Dispositivos:</strong> Importância das proteções coletivas e
+                            individuais, como grades e sensores.<br>
+                            <strong>Manutenção e Intervenções:</strong> Bloqueio de energias (elétrica, mecânica e
+                            pneumática).<br>
+                            <strong>Situações de Emergência:</strong> Ações em caso de falhas e retirada de
+                            proteções.<br>
+                            <strong>Identificação e Análise de Riscos:</strong> Riscos específicos de cada máquina e
+                            medidas de proteção.
+                        </p>
+
+                        <p><strong>Carga Horária:</strong> 8 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 7 -->
+                <div class="modal" id="bdi">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('bdi')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c7-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c7-2.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c7-3.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c7-4.png" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento – Brigada de Incêndio</h2>
+
+                        <p>
+                            O treinamento de brigada de incêndio, conforme NBR 14276, NR 23 e IT 12 do CBMMG, abrange
+                            conhecimentos teóricos e práticos para prevenção, combate a princípios de incêndio e
+                            primeiros socorros.
+                        </p>
+
+                        <p>
+                            Deve ser realizado periodicamente, geralmente de forma anual, garantindo que os brigadistas
+                            mantenham suas habilidades atualizadas.
+                        </p>
+
+                        <h3>Normas e Requisitos</h3>
+                        <p>
+                            <strong>NBR 14276:</strong> Define os requisitos para formação da brigada e validade de
+                            12 meses do treinamento.<br>
+                            <strong>NR 23:</strong> Trata da prevenção e combate a incêndios.<br>
+                            <strong>IT 12 (CBMMG):</strong> Estabelece critérios mínimos para brigadas em Minas
+                            Gerais.
+                        </p>
+
+                        <h3>Certificação e Validade</h3>
+                        <p>
+                            Certificado de brigadista ao final do curso.<br>
+                            Deve conter nome completo, RG, carga horária, período do treinamento e dados do
+                            instrutor.<br>
+                            <strong>Validade:</strong> até 12 meses, sendo necessária reciclagem após este período.
+
+                        </p>
+
+                        <h3>Níveis de Treinamento e Carga Horária</h3>
+                        <p>
+                            <strong>Nível Básico:</strong> 8 horas-aula<br>
+                            <strong>Nível Intermediário:</strong> 8 horas em campo<br>
+                            <strong>Nível Avançado:</strong> 24 horas
+                        </p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 8 -->
+                <div class="modal" id="te">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('te')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c8-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/nr111.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/nr112.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/nr113.png" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento – NR 11 Operador de Transpaleteira</h2>
+
+                        <p>
+                            O curso de NR 11 – Segurança na Operação de Transpaleteiras aborda conhecimentos teóricos e
+                            práticos para garantir o manuseio seguro e eficiente do equipamento, conforme as diretrizes
+                            da norma regulamentadora.
+                        </p>
+
+                        <h3>O que o curso oferece</h3>
+                        <p>
+                            <strong>Conhecimentos teóricos:</strong> Normas de segurança, responsabilidades, causas
+                            e prevenção de acidentes, centro de gravidade e funcionamento da transpaleteira.<br>
+                            <strong>Aspectos práticos:</strong> Verificação de defeitos, operação segura, transporte
+                            de materiais, empilhamento e desempilhamento.<br>
+                            <strong>EPIs e sinalização:</strong> Uso correto dos EPIs e sinalização de segurança
+                            conforme NR 26.<br>
+                            <strong>Validade:</strong> Certificação válida por 1 ano, com reciclagem obrigatória
+                            após esse período.
+                        </p>
+
+                        <p><strong>Carga Horária:</strong> 08 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 9 -->
+                <div class="modal" id="nr33">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('nr33')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                               <img src="images/cursos/c9-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/nr331.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/nr332.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/nr333.jpg" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento – NR 33 Espaço Confinado</h2>
+
+                        <p>
+                            O curso de espaço confinado NR 33 é uma capacitação obrigatória para trabalhadores, vigias e
+                            supervisores que atuam em espaços confinados.
+                        </p>
+
+                        <p>
+                            O treinamento ensina a identificar riscos, realizar controle e monitoramento, além de
+                            aplicar procedimentos de segurança para garantir a integridade dos trabalhadores, com
+                            conteúdo teórico e prático.
+                        </p>
+
+                        <h3>Funções e Carga Horária</h3>
+                        <p>
+                            <strong>Trabalhador autorizado e Vigia:</strong> 16h (inicial) e 8h (reciclagem anual).
+                            <br>
+                            <strong>Supervisor de entrada:</strong> 40h (inicial) e 8h (reciclagem anual).<br>
+                            <strong>Praticidade:</strong> No mínimo 50% da carga horária deve ser prática para
+                            validade do curso.
+                        </p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 10 -->
+                <div class="modal" id="nr35">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('nr35')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c10-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c10-2.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c10-3.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c10-4.png" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento – NR 35 Trabalho em Altura</h2>
+
+                        <p>
+                            O treinamento NR 35 é uma capacitação obrigatória para trabalhadores que atuam em altura
+                            acima de 2 metros, com foco em segurança e prevenção de quedas.
+                        </p>
+
+                        <p>
+                            O curso aborda análise de riscos, uso correto de EPIs e técnicas seguras para execução
+                            das atividades em altura, devendo ser atualizado a cada dois anos.
+                        </p>
+
+                        <h3>Informações do Curso</h3>
+                        <p>
+                            <strong>Objetivo:</strong> Garantir que o trabalhador execute atividades em altura
+                            com segurança, reduzindo acidentes.<br>
+                            <strong>Para quem:</strong> Colaboradores que realizam atividades com risco de queda
+                            acima de 2 metros.<br>
+                            <strong>Conteúdo:</strong> Planejamento, organização, identificação de riscos,
+                            medidas preventivas e uso correto dos EPIs.<br>
+                            <strong>O que é:</strong> Capacitação teórica e prática exigida pela NR 35.<br>
+                            <strong>Validade:</strong> Revalidação obrigatória a cada 2 anos.
+                        </p>
+
+                        <p><strong>Carga Horária:</strong> 8 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 11 -->
+                <div class="modal" id="epi">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('epi')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c11-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c11-2.jpg" alt="" class="carousel-slide">
+                                <img src="images/cursos/c11-3.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c11-4.png" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento – EPI e EPC</h2>
+
+                        <p>
+                            O treinamento de EPI e EPC é fundamental para a segurança no trabalho, garantindo que os
+                            colaboradores saibam utilizar corretamente os Equipamentos de Proteção Individual e se
+                            beneficiar dos Equipamentos de Proteção Coletiva.
+                        </p>
+
+                        <p>
+                            É frequentemente exigido pela legislação trabalhista, especialmente pela Norma
+                            Regulamentadora nº 6 (NR-6), abordando responsabilidades do empregador e do empregado.
+                        </p>
+
+                        <h3>Conteúdos Abordados</h3>
+                        <p>
+                            <strong>Definições e conceitos:</strong> O que são EPIs e sua finalidade.<br>
+                            <strong>Identificação de riscos:</strong> Análise dos perigos por função ou
+                            ambiente.<br>
+                            <strong>Tipos de EPIs:</strong>
+                        </p>
+                        <ul>
+                            <li class="epi-list">Proteção auditiva (abafadores, protetores auriculares)</li>
+                            <li class="epi-list">Proteção respiratória (máscaras e filtros)</li>
+                            <li class="epi-list">Proteção visual e facial (óculos, viseiras)</li>
+                            <li class="epi-list">Proteção da cabeça (capacetes)</li>
+                            <li class="epi-list">Proteção de mãos e braços (luvas, mangotes)</li>
+                            <li class="epi-list">Proteção de pernas e pés (botas, botinas)</li>
+                            <li class="epi-list">Proteção contra quedas (cintos, cinturões)</li>
+                        </ul>
+
+                        <p>
+                            <strong>Uso correto:</strong> Como vestir, ajustar e utilizar adequadamente.<br>
+                            <strong>Guarda e conservação:</strong> Limpeza, higienização e manutenção.<br>
+                            <strong>Limitações dos EPIs:</strong> Entendimento sobre restrições e proteção
+                            parcial.
+                        </p>
+
+                        <p><strong>Carga Horária:</strong> 04 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 12 -->
+                <div class="modal" id="pta">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('pta')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c12-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c12-2.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c12-3.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c12-4.png" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento – PEMT (NR 18)</h2>
+
+                        <p>
+                            O curso de Plataforma Elevatória Móvel de Trabalho (PEMT), conforme a NR 18, capacita
+                            profissionais para operar esses equipamentos com segurança, seguindo a legislação
+                            vigente.
+                        </p>
+
+                        <p>
+                            O treinamento contempla aspectos teóricos e práticos, garantindo a integridade física
+                            dos trabalhadores e a prevenção de acidentes.
+                        </p>
+
+                        <h3>O que o treinamento abrange</h3>
+                        <p>
+                            <strong>Segurança:</strong> Procedimentos e normas da NR 18 para operação segura.
+                            <br>
+                            <strong>Operação:</strong> Manuseio, movimentação e deslocamento da plataforma.<br>
+                            <strong>Manutenção:</strong> Noções de manutenção preventiva e responsabilidades do
+                            operador e proprietário.<br>
+                            <strong>EPIs:</strong> Uso correto de capacete com jugular e cinto tipo
+                            paraquedista.
+                        </p>
+
+                        <h3>Tipos de Treinamento</h3>
+                        <p>
+                            <strong>Formação inicial:</strong> Capacita para operar plataformas conforme NR 18.
+                            <br>
+                            <strong>Reciclagem:</strong> Atualização periódica com menor carga horária.<br>
+                            <strong>Cursos específicos:</strong> Plataformas 1A, 1B, 3A e 3B.
+                        </p>
+
+                        <p><strong>Carga Horária:</strong> 08 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Curso 13 -->
+                <div class="modal" id="nr18">
+                    <div class="modal-content">
+                        <span class="close" onclick="fecharModal('nr18')">&times;</span>
+                        <div class="hero-modal">
+                            <div class="carousel">
+                                <img src="images/cursos/c13-1.png" alt=""
+                                    class="carousel-slide active">
+                                <img src="images/cursos/c13-2.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c13-3.png" alt="" class="carousel-slide">
+                                <img src="images/cursos/c13-4.png" alt="" class="carousel-slide">
+                            </div>
+
+                            <!-- Indicadores de Slide -->
+                            <div class="slide-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                                <span class="indicator" data-slide="3"></span>
+                            </div>
+                        </div>
+                        <h2>Detalhes do Treinamento – PEMT (NR 18)</h2>
+
+                        <p>
+                            O curso de Plataforma Elevatória Móvel de Trabalho (PEMT), conforme a NR 18, capacita
+                            profissionais para operar esses equipamentos com segurança, seguindo a legislação
+                            vigente.
+                        </p>
+
+                        <p>
+                            O treinamento contempla aspectos teóricos e práticos, garantindo a integridade física
+                            dos trabalhadores e a prevenção de acidentes.
+                        </p>
+
+                        <h3>O que o treinamento abrange</h3>
+                        <p>
+                            <strong>Segurança:</strong> Procedimentos e normas da NR 18 para operação segura.
+                            <br>
+                            <strong>Operação:</strong> Manuseio, movimentação e deslocamento da plataforma.<br>
+                            <strong>Manutenção:</strong> Noções de manutenção preventiva e responsabilidades do
+                            operador e proprietário.<br>
+                            <strong>EPIs:</strong> Uso correto de capacete com jugular e cinto tipo
+                            paraquedista.
+                        </p>
+
+                        <h3>Tipos de Treinamento</h3>
+                        <p>
+                            <strong>Formação inicial:</strong> Capacita para operar plataformas conforme NR 18.
+                            <br>
+                            <strong>Reciclagem:</strong> Atualização periódica com menor carga horária.<br>
+                            <strong>Cursos específicos:</strong> Plataformas 1A, 1B, 3A e 3B.
+                        </p>
+
+                        <p><strong>Carga Horária:</strong> 08 horas</p>
+
+                        <a href="contato.html" class="btn-ctt">Contato</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <!-- Conteúdo principal do rodapé -->
+            <div class="footer-content">
+                <!-- Coluna do logotipo -->
+                <div class="footer-column">
+                    <img src="images/logo-apice.png" alt="Ápice Soluções Empresariais" class="footer-logo-img" loading="lazy">
+                </div>
+                <!-- Coluna de links rápidos -->
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="servico.html">Serviços</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="instrutor.html">Sobre</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <!-- Coluna de contato -->
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <div class="footer-contact">
+                        <span><i class="fas fa-phone" aria-hidden="true"></i> (31) 9 8014-2641</span>
+                        <span><i class="fas fa-envelope" aria-hidden="true"></i> apiceempresarial@gmail.com</span>
+                    </div>
+                </div>
+                <!-- Coluna de redes sociais -->
+                <div class="footer-column">
+                    <h3>Siga-nos</h3>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/wemersonnunescosta" aria-label="Facebook da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://instagram.com/wemersonnunescosta" aria-label="Instagram da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://linkedin.com/in/wemersonnunescosta" aria-label="LinkedIn da Ápice Empresarial" rel="noopener" target="_blank"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Linha inferior do rodapé -->
+            <div class="footer-bottom">
+                <p>© 2026 - Ápice Empresarial. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="cursos.js"></script>
+
+</body>
+
+</html>

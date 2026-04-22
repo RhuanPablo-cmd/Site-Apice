@@ -1,0 +1,656 @@
+/* ==========================================================================
+   1. BOTÕES FLUTUANTES (POSIÇÃO FIXA)
+   ========================================================================== */
+
+/* ===== CABEÇALHO (HEADER) ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    position: static;
+    z-index: 100;
+    padding: 18px 0;
+    background: rgba(26, 58, 92, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.header.scrolled {
+    background: rgba(26, 58, 92, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 50px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 90px;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.logo-img:hover {
+    opacity: 0.8;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    padding: 1.25rem 0;
+}
+
+.nav-link:hover {
+    color: #4da3ff;
+}
+
+.nav-link.active {
+    color: #4da3ff;
+}
+
+/* Botão de alternância de tema (claro/escuro) */
+.theme-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #1a3a5c;
+    color: white;
+    border: 2px solid #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    z-index: 9999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+    background-color: #2a4a6c;
+}
+body.dark-mode .theme-toggle-btn {
+    background-color: #1a3a5c;
+    border-color: #fff;
+}
+
+#themeIcon {
+    width: 37px;
+    height: 40px;
+}
+
+/* Botão voltar ao topo - posicionado no lado esquerdo */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #1a3a5c;
+    color: white;
+    border: 2px solid #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    z-index: 9998;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top-btn:hover {
+    transform: translateY(-5px);
+    background-color: #2a4a6c;
+}
+
+/* ==========================================================================
+   2. MENU HAMBURGUER (MÓVEL)
+   ========================================================================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 201;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+@media (max-width: 992px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        background: rgba(26, 58, 92, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 1001; /* garante que painel fique abaixo do botão X */
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    /* Animação do botão hambúrguer transformando em X */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+
+    /* Posicionamento do botão X quando menu está ativo */
+    .hamburger.active {
+        position: fixed; 
+        top: 1rem;
+        right: 20px;
+        z-index: 1002; /* sobrepõe o menu lateral aberto */
+    }
+}
+
+/* ==========================================================================
+   3. MODAIS (JANELAS POP-UP)
+   ========================================================================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+
+    /* Centralização do conteúdo */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    /* Animação de entrada do modal */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    margin: 5% auto;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Animação de zoom do conteúdo */
+    animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-modal {
+    background-color: transparent;
+    color: #3b7fb5;
+    border: 2px solid #3b7fb5;
+    padding: 0.75rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-modal:hover {
+    background-color: #3b7fb5;
+    color: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(59, 127, 181, 0.3);
+    transform: translateY(-2px);
+}
+
+.modal-content h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5rem;
+}
+
+.modal-content p,
+.modal-content ul,
+.modal-content strong,
+.modal-content li,
+.modal-content .epi-list {
+    color: #121212;
+    padding: 0.7rem;
+    text-align: justify;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.close:hover {
+    background: #e5e7eb;
+    color: #111827;
+    transform: rotate(90deg);
+}
+
+/* Container do carrossel de imagens do modal */
+.hero-modal {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+    z-index: 1;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* Indicadores de navegação do carrossel */
+.slide-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 30;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 100px;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.indicator.active {
+    width: 24px;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+/* ==========================================================================
+   5. COMPONENTES AUXILIARES
+   ========================================================================== */
+.divider-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 40px;
+}
+
+.imagemcolegas-container {
+    height: auto;
+    width: auto;
+}
+
+#imagem-corrigida {
+    width: 160px;
+    height: 160px;
+}
+
+.btn-ctt {
+    background-color: #3b7fb5;
+    color: #ffffff;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 1rem;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   6. MODO ESCURO (DARK MODE)
+   ========================================================================== */
+body.dark-mode {
+    background-color: #1a3a5c !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .header {
+    background-color: rgba(26, 58, 92, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .nav-link {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .hero-page {
+    background-color: #1a3a5c !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+
+body.dark-mode .curso-card {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .curso-card h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .curso-descricao {
+    color: #bbbbbb !important;
+}
+
+body.dark-mode .curso-badge {
+    background-color: #2c4c6c !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .curso-duracao {
+    color: #999999 !important;
+}
+
+body.dark-mode .modal-content p,
+body.dark-mode .modal-content ul,
+body.dark-mode .modal-content li {
+    color: #999999;
+}
+
+body.dark-mode .modal-content strong {
+    color: #c1c1c1;
+}
+
+body.dark-mode .divider-line {
+    background-color: #333 !important;
+}
+
+body.dark-mode .cursos-section {
+    background-color: #121212 !important;
+}
+
+body.dark-mode .section-header h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .section-header p {
+    color: #aaaaaa !important;
+}
+
+body.dark-mode .btn-small {
+    background-color: #1a3a5c !important;
+    color: white !important;
+}
+
+body.dark-mode .btn-small:hover {
+    background-color: #2a4a6c !important;
+}
+
+body.dark-mode .back-to-top-btn {
+    background-color: #1a3a5c;
+    border-color: #fff;
+}
+
+body.dark-mode .modal-content {
+    background-color: #121212;
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE - DESKTOP (1024px+)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .theme-toggle-btn, .back-to-top-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    .theme-toggle-btn {
+        bottom: 30px;
+        right: 30px;
+    }
+    .back-to-top-btn {
+        bottom: 30px;
+        left: 30px;
+    }
+
+    .modal-content {
+        max-width: 700px;
+    }
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDADE - TABLET (768px a 1023px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .theme-toggle-btn, .back-to-top-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    .theme-toggle-btn {
+        bottom: 20px;
+        right: 20px;
+    }
+    .back-to-top-btn {
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .modal-content {
+        max-width: 600px;
+        padding: 30px;
+    }
+
+    #themeIcon {
+        width: 37px;
+        height: 40px;
+    }
+}
+
+/* ==========================================================================
+   9. RESPONSIVIDADE - MOBILE (até 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+    .header-content {
+        padding: 1rem 18px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        background: rgba(27, 65, 102, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav.active {
+        right: 0;
+        z-index: 100;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+
+    .theme-toggle-btn, .back-to-top-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    .theme-toggle-btn {
+        bottom: 15px;
+        right: 15px;
+    }
+    .back-to-top-btn {
+        bottom: 15px;
+        left: 15px;
+    }
+
+    #themeIcon {
+        width: 30px;
+        height: 33px;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .close {
+        font-size: 28px;
+        top: 5px;
+        right: 10px;
+    }
+
+    .slide-indicators {
+        bottom: 1rem;
+        gap: 6px;
+    }
+
+    .indicator {
+        width: 6px;
+        height: 6px;
+    }
+}
